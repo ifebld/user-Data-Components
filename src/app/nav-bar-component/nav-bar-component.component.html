@@ -1,0 +1,5 @@
+<nav class="navbar navbar-dark bg-dark">
+    <ul class="nav">
+        <app-nav-link-component *ngFor="let link of navLinks" [navInfo] = "link" ></app-nav-link-component>
+    </ul>
+</nav>

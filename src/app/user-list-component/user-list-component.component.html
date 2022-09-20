@@ -1,0 +1,15 @@
+
+    <td scope="col">{{index + 1}}</td>
+    <td>{{userDetails.name}}</td>
+    <td>{{userDetails.username}}</td>
+    <td>{{userDetails.email}}</td>
+    <td>
+        <div class="box">
+            <a class="button" (click)="openEditDialogue(userDetails)" href="#popup1">Edit</a>
+        </div>
+    </td> 
+   <td>
+        <div class="box"> 
+            <a class="buttonDelete" (click)="delete(userDetails)">Delete</a> 
+        </div>
+    </td>

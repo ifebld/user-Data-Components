@@ -1,0 +1,17 @@
+<div class="col-sm-7 p-3 ">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">UserName</th>
+          <th scope="col">Email</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody >
+        <app-user-list-component *ngFor="let user of userList; let i = index" [userDetails] = "user" [index]="i">
+        </app-user-list-component>
+        </tbody>
+    </table>
+  </div>

@@ -1,0 +1,54 @@
+<app-nav-bar-component [navLinks] = "links"></app-nav-bar-component>
+<div class="container">
+    <div class="row gx-2">
+        <div class="col-sm-5 p-3 ">
+            <form>
+            <div class="mb-3 mt-3">
+                <label for="text" class="form-label h4">Name:</label>
+                <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name" name="product" [(ngModel)] ="name">
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="text" class="form-label h3">UserName:</label>
+                <input type="text" class="form-control" name="username" id="username" placeholder="Username" name="price" [(ngModel)] ="username">
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="text" class="form-label h3">Email:</label>
+                <input type="text" class="form-control" name="email" id="email" placeholder="Email" name="email" [(ngModel)] ="email">
+            </div>
+            <span>
+                <label class="h4">Gender</label><br>
+                <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="fitem" id="inlineRadio1" value="Female"  [(ngModel)] ="type">
+                <label class="form-check-label" for="inlineRadio1">Female</label>
+                </div>
+                <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="utnesil" id="inlineRadio2" value="Male"  [(ngModel)] ="type">
+                <label class="form-check-label" for="inlineRadio2">Male</label>
+                </div>
+            </span><br><br>
+
+            <span>
+                <label class="h4">City</label><br><br>
+                <div class="col-sm-3 ml-4">
+                <select class="form-select" name="picked" id="specificSizeSelect" [(ngModel)] ="city">
+                    <option selected>Select City...</option>
+                    <option value="Abuja" name="White">Abuja</option>
+                    <option value="Moscow" name="brown">Moscow</option>
+                    <option value="London" name="red" >London</option>
+                    <option value="Cape Town" name="yellow" >Cape Town</option>
+                    <option value="Tunis" name="blue" >Tunis</option>
+                </select>
+                </div>
+
+            </span>
+            </form>
+            <br><br>
+            <button class="btn btn-primary"  (click)="submit()" type='button'>Submit</button>
+        </div>
+        <app-user-component [userList]= "users"></app-user-component>
+    </div>
+</div>
+
+
+
+<router-outlet></router-outlet>
