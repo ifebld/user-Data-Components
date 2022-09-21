@@ -10,8 +10,10 @@
         </tr>
       </thead>
       <tbody >
-        <app-user-list-component *ngFor="let user of userList; let i = index" [userDetails] = "user" [index]="i">
+        <app-user-list-component *ngFor="let user of userList; let i = index" [userDetails] = "user" [index]="i" (deleteItem)="deleteUserSentFromChild($event)" >
+ 
         </app-user-list-component>
-        </tbody>
+        
+    </tbody>
     </table>
   </div>

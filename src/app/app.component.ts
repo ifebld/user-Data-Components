@@ -21,7 +21,7 @@ export class AppComponent {
     this.getUsers();
   }
 
-
+  editform : any = {};
 
   links=[
     {
@@ -71,5 +71,35 @@ export class AppComponent {
       console.error(error);
     }
   }
+
+  saveNewEdit(){
+    //rrun the put request
+    (async () => {
+      try {
+        const response:any = await axios.put(`https://jsonplaceholder.typicode.com/users/${this.editform.id}`);
+        console.log(response);
+    //equate the updated user to response 
+        let updatedUser = response.data;
+
+      // this.getUsers();
+
+      //Manual update
+      //map throught the available users to return updated user
+        let newUserList = this.users.map((user: any) => {
+          if (updatedUser.id == user.id) {
+            return updatedUser;
+          }else{
+            return user;
+          }
+        });
+
+        this.users = newUserList;
+   
+      }catch (error) {
+        console.error(error);
+      }
+    })()
+ 
+    }
 }
 

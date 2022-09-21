@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import axios from 'axios'
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-user-list-component',
@@ -9,7 +9,8 @@ import axios from 'axios'
 export class UserListComponentComponent implements OnInit {
   @Input() userDetails : any = {};
   @Input() index: any = 0;
-  constructor() { }
+  @Output() deleteItem = new EventEmitter<any>();
+  constructor() { };
 
   ngOnInit(): void {
   }
@@ -23,29 +24,10 @@ export class UserListComponentComponent implements OnInit {
     this.editform = {...this.userDetails};
   }
 
-  
-    delete(userToDelete:any){
-      (async() => {
-        try{
-          const response = await axios.delete(`https://jsonplaceholder.typicode.com/users/${userToDelete.id}`);
-            console.log(response);
-
-           // this.getUsers();
-
-           //Manual update
-           let updatedUserList = this.userDetails.filter((user:any) => {
-              if(user.id !== userToDelete.id){
-                return user;
-              }
-           })
-
-           this.userDetails = updatedUserList;
-           
-        } catch (error){
-          console.log(error)
-          }
-        }
-  )()};
+  deleteUser(){
+    this.deleteItem.emit(this.userDetails)
+  }
+   
   }
 
 
