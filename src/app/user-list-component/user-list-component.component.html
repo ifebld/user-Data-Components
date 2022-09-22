@@ -1,5 +1,5 @@
 
-        <td>{{index + 1}}</td>
+        <!-- <td>{{index + 1}}</td>
         <td>{{userDetails.name}}</td>
         <td>{{userDetails.username}}</td>
         <td>{{userDetails.email}}</td>
@@ -9,8 +9,23 @@
             
                 <a class="btn btn-danger" (click)="deleteUser()">Delete</a> 
             
-        </td>
-    
+        </td> -->
+
+        <div class="row p-1 border-bottom">
+            <div class="col-md-1">{{index + 1}}</div>
+            <div class="col-md-2">{{userDetails.name}}</div>
+            <div class="col-md-3">{{userDetails.username}}</div>
+            <div class="col-md-3 text-break">{{userDetails.email}}</div>
+            <div class="col-md-3">
+                <a class="btn btn-success" (click)="openEditDialogue(userDetails)" href="#popup1">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </a>
+            
+                <a class="btn btn-danger" (click)="deleteUser()">
+                    <i class="fa-solid fa-trash"></i>
+                </a>
+            </div>
+        </div>
 
     
 

@@ -1,5 +1,5 @@
 <div>
-    <table class="table">
+    <!-- <table class="table">
       <thead>
         <tr>
           <td>Serial Number</td>
@@ -10,12 +10,11 @@
         </tr>
       </thead>
       <tbody>
-        <!-- <tr  *ngFor="let user of userList; let i = index">
-          <td app-user-list-component [userDetails] = "user" [index]="i" (deleteItem)="deleteUserSentFromChild($event)"></td>
-        </tr> -->
+       
         <app-user-list-component *ngFor="let user of userList; let i = index" [userDetails] = "user" [index]="i" (deleteItem)="deleteUserSentFromChild($event)" >
         </app-user-list-component>
       </tbody>
-    </table>
-    
+    </table> -->
+    <app-user-list-component *ngFor="let user of userList; let i = index" [userDetails] = "user" [index]="i" (deleteItem)="deleteUserSentFromChild($event)" >
+    </app-user-list-component>
   </div>
