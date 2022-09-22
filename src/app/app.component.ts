@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import axios from 'axios';
+import { EditformService } from './editform.service';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,9 @@ import axios from 'axios';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  constructor(public editformService : EditformService) {}
+
   title = 'user-data-update';
   
   name="";
@@ -38,8 +42,7 @@ export class AppComponent {
     }
   ]
 
-  submit(){
-    
+  submit(){   
     (async () => {
        try {
          const response = await axios.post('https://jsonplaceholder.typicode.com/users',{
@@ -53,53 +56,23 @@ export class AppComponent {
          //this.getUsers();
  
          //Manual update
-         this.users.push(response.data);
+         this.editformService.users.push(response.data);
        }catch (error) {
          console.error(error);
-       }
+       };
      })()
    }
-
-
 
   getUsers =  async  () => {
     try {
       const response = await axios.get('https://jsonplaceholder.typicode.com/users');
       console.log(response);
-      this.users = response.data;
+      //this.users = response.data;
+      this.editformService.users = response.data;
     } catch (error) {
       console.error(error);
     }
   }
 
-  saveNewEdit(){
-    //rrun the put request
-    (async () => {
-      try {
-        const response:any = await axios.put(`https://jsonplaceholder.typicode.com/users/${this.editform.id}`);
-        console.log(response);
-    //equate the updated user to response 
-        let updatedUser = response.data;
-
-      // this.getUsers();
-
-      //Manual update
-      //map throught the available users to return updated user
-        let newUserList = this.users.map((user: any) => {
-          if (updatedUser.id == user.id) {
-            return updatedUser;
-          }else{
-            return user;
-          }
-        });
-
-        this.users = newUserList;
-   
-      }catch (error) {
-        console.error(error);
-      }
-    })()
- 
-    }
 }
 

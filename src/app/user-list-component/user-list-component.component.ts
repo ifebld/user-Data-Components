@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
+import { EditformService } from '../editform.service';
 
 
 @Component({
@@ -7,27 +8,24 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./user-list-component.component.css']
 })
 export class UserListComponentComponent implements OnInit {
+  //@ViewChild('childComponentTemplate') childComponentTemplate : TemplateRef<any> = "";
   @Input() userDetails : any = {};
   @Input() index: any = 0;
   @Output() deleteItem = new EventEmitter<any>();
-  constructor() { };
+  constructor(private editformService : EditformService) { };
 
   ngOnInit(): void {
   }
-
   //Edit form
   editform : any = {};
-
-  openEditDialogue(userDetails:any){
-    console.log(this.userDetails)
-    //this.editform = Object.assign(user);
-    this.editform = {...this.userDetails};
-  }
-
-  deleteUser(){
-    this.deleteItem.emit(this.userDetails)
-  }
-   
+    openEditDialogue(userDetails:any){
+      console.log(this.userDetails)
+      //this.editform = Object.assign(user);
+      this.editformService.userToEdit = {...this.userDetails};
+    }
+    deleteUser(){
+      this.deleteItem.emit(this.userDetails)
+    }
   }
 
 
